@@ -1,6 +1,8 @@
 //
 // Now that we've seen how methods work, let's see if we can help
+// 现在我们已经看到了方法是如何工作的，让我们看看是否可以
 // our elephants out a bit more with some Elephant methods.
+// 用一些大象方法来更多地帮助我们的大象。
 //
 const std = @import("std");
 
@@ -10,8 +12,10 @@ const Elephant = struct {
     visited: bool = false,
 
     // New Elephant methods!
+    // 新的大象方法！
     pub fn getTail(self: *Elephant) *Elephant {
         return self.tail.?; // Remember, this means "orelse unreachable"
+                            // 记住，这意味着"orelse unreachable"
     }
 
     pub fn hasTail(self: *Elephant) bool {
@@ -24,6 +28,7 @@ const Elephant = struct {
 
     pub fn print(self: *Elephant) void {
         // Prints elephant letter and [v]isited
+        // 打印大象字母和[v]已访问
         const v: u8 = if (self.visited) 'v' else ' ';
         std.debug.print("{u}{u} ", .{ self.letter, v });
     }
@@ -35,6 +40,7 @@ pub fn main() void {
     var elephantC = Elephant{ .letter = 'C' };
 
     // This links the elephants so that each tail "points" to the next.
+    // 这连接了大象，使每个尾巴"指向"下一个。
     elephantA.tail = &elephantB;
     elephantB.tail = &elephantC;
 
@@ -44,7 +50,9 @@ pub fn main() void {
 }
 
 // This function visits all elephants once, starting with the
+// 这个函数访问所有大象一次，从
 // first elephant and following the tails to the next elephant.
+// 第一只大象开始，沿着尾巴到下一只大象。
 fn visitElephants(first_elephant: *Elephant) void {
     var e = first_elephant;
 
@@ -53,14 +61,19 @@ fn visitElephants(first_elephant: *Elephant) void {
         e.visit();
 
         // This gets the next elephant or stops:
+        // 这获取下一只大象或停止：
         // which method do we want here?
+        // 我们在这里想要哪个方法？
         e = if (e.hasTail()) e.??? else break;
     }
 }
 
 // Zig's enums can also have methods! This comment originally asked
+// Zig的枚举也可以有方法！这个注释原本询问
 // if anyone could find instances of enum methods in the wild. The
+// 是否有人能在实际代码中找到枚举方法的实例。
 // first five pull requests were accepted and here they are:
+// 前五个拉取请求被接受了，它们是：
 //
 // 1) drforester - I found one in the Zig source:
 // https://github.com/ziglang/zig/blob/041212a41cfaf029dc3eb9740467b721c76f406c/src/Compilation.zig#L2495

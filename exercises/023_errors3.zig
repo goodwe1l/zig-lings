@@ -6,6 +6,12 @@
 //
 // If canFail() fails, foo will equal 6.
 //
+// 处理错误联合的一种方法是"捕获"任何错误并用默认值替换它。
+//
+//     foo = canFail() catch 6;
+//
+// 如果 canFail() 失败，foo 将等于 6。
+//
 const std = @import("std");
 
 const MyNumberError = error{TooSmall};
@@ -19,6 +25,8 @@ pub fn main() void {
 
 // Please provide the return type from this function.
 // Hint: it'll be an error union.
+// 请提供这个函数的返回类型。
+// 提示：它将是一个错误联合。
 fn addTwenty(n: u32) ??? {
     if (n < 5) {
         return MyNumberError.TooSmall;
