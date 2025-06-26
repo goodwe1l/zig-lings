@@ -4,6 +4,8 @@
 // the individual functions are implemented. Because this is wonderfully
 // suitable as a template for your own functions. In addition these
 // standard functions are part of the basic configuration of Zig.
+// 标准库的功能在 Zig 中变得越来越重要。首先，查看各个函数是如何实现的很有帮助。
+// 因为这非常适合作为您自己函数的模板。此外，这些标准函数是 Zig 基本配置的一部分。
 //
 // This means that they are always available on every system.
 // Therefore it is worthwhile to deal with them also in Ziglings.
@@ -12,9 +14,14 @@
 // And for this sequential reading and processing, Zig provides some
 // useful functions, which we will take a closer look at in the coming
 // exercises.
+// 这意味着它们在每个系统上都始终可用。因此，在 Ziglings 中处理它们也是值得的。
+// 这是学习重要技能的好方法。例如，经常需要处理文件中的大量数据。
+// 对于这种顺序读取和处理，Zig 提供了一些有用的函数，
+// 我们将在接下来的练习中仔细研究。
 //
 // A nice example of this has been published on the Zig homepage,
 // replacing the somewhat dusty 'Hello world!
+// 在 Zig 主页上发布了一个很好的例子，取代了有些陈旧的 'Hello world!'
 //
 // Nothing against 'Hello world!', but it just doesn't do justice
 // to the elegance of Zig and that's a pity, if someone takes a short,
@@ -22,19 +29,27 @@
 // the present example is simply better suited and we will therefore
 // use it as an introduction to tokenizing, because it is wonderfully
 // suited to understand the basic principles.
+// 对 'Hello world!' 没有什么意见，但它只是没有体现出 Zig 的优雅，
+// 这很遗憾，如果有人简短地第一次浏览主页却没有被"迷住"。
+// 为此，当前的例子更适合，因此我们将使用它作为标记化的介绍，
+// 因为它非常适合理解基本原理。
 //
 // In the following exercises we will also read and process data from
 // large files and at the latest then it will be clear to everyone how
 // useful all this is.
+// 在接下来的练习中，我们也将从大文件中读取和处理数据，
+// 最迟到那时每个人都会清楚这一切有多么有用。
 //
 // Let's start with the analysis of the example from the Zig homepage
 // and explain the most important things.
+// 让我们从分析 Zig 主页上的示例开始，解释最重要的事情。
 //
 //    const std = @import("std");
 //
 //    // Here a function from the Standard library is defined,
 //    // which transfers numbers from a string into the respective
 //    // integer values.
+//    // 这里定义了一个来自标准库的函数，它将字符串中的数字转换为相应的整数值。
 //    const parseInt = std.fmt.parseInt;
 //
 //    // Defining a test case
@@ -118,6 +133,8 @@
 // Now we also want to write a small program to tokenize some data,
 // after all we need some practice. Suppose we want to count the words
 // of this little poem:
+// 现在我们也想编写一个小程序来标记化一些数据，毕竟我们需要一些练习。
+// 假设我们想计算这首小诗的单词数：
 //
 //      My name is Ozymandias, King of Kings;
 //      Look on my Works, ye Mighty, and despair!
@@ -130,15 +147,18 @@ const print = std.debug.print;
 pub fn main() !void {
 
     // our input
+    // 我们的输入
     const poem =
         \\My name is Ozymandias, King of Kings;
         \\Look on my Works, ye Mighty, and despair!
     ;
 
     // now the tokenizer, but what do we need here?
+    // 现在是标记器，但我们这里需要什么？
     var it = std.mem.tokenizeAny(u8, poem, ???);
 
     // print all words and count them
+    // 打印所有单词并计数
     var cnt: usize = 0;
     while (it.next()) |word| {
         cnt += 1;
@@ -146,5 +166,6 @@ pub fn main() !void {
     }
 
     // print the result
+    // 打印结果
     print("This little poem has {d} words!\n", .{cnt});
 }
