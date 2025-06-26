@@ -16,7 +16,7 @@
 // 请完成下面的导入：
 //
 
-??? = @import("std");
+const std = @import("std");
 
 pub fn main() void {
     std.debug.print("Standard Library.\n", .{});

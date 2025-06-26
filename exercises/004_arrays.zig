@@ -36,7 +36,7 @@ pub fn main() void {
     // （问题 1）
     // 这个 "const" 稍后会导致问题 - 你能看出是什么问题吗？
     // 我们如何修复它？
-    const some_primes = [_]u8{ 1, 3, 5, 7, 11, 13, 17, 19 };
+    var some_primes = [_]u8{ 1, 3, 5, 7, 11, 13, 17, 19 };
 
     // Individual values can be set with '[]' notation.
     // Example: This line changes the first prime to 2 (which is correct):
@@ -54,15 +54,15 @@ pub fn main() void {
     // Looks like we need to complete this expression. Use the example
     // above to set "fourth" to the fourth element of the some_primes array:
     // （问题 2）
-    // 看起来我们需要完成这个表达式。使用上面的示例将 "fourth" 
+    // 看起来我们需要完成这个表达式。使用上面的示例将 "fourth"
     // 设置为 some_primes 数组的第四个元素：
-    const fourth = some_primes[???];
+    const fourth = some_primes[3];
 
     // (Problem 3)
     // Use the len property to get the length of the array:
     // （问题 3）
     // 使用 len 属性获取数组的长度：
-    const length = some_primes.???;
+    const length = some_primes.len;
 
     std.debug.print("First: {}, Fourth: {}, Length: {}\n", .{
         first, fourth, length,
